@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "name": "Ivanov Petr",
+      "group": "first",
+      "avg": "five",
+      "debt": "C"
+    },
+    {
+      "name": "Sidorov Ivan",
+      "group": "three",
+      "avg": "four",
+      "debt": "C++"
+    },
+    {
+      "name": "Pertov Nikita",
+      "group": "IU8-31",
+      "avg": "three",
+      "debt": [
+        "C++",
+        "Linux",
+        "Network"
+      ]
+    }
+  ],
+  "_meta": {
+    "count": 3
+  }
+}

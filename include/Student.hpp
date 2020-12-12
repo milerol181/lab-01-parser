@@ -9,13 +9,23 @@
 #include <string>
 #include "nlohmann/json.hpp"
 
+using namespace nlohmann;
+
 class Student {
-  void from_json(const json& j, Student& s);
+ public:
+  void from_json(const json& j);
   auto get_name(const json& j) -> std::string;
   auto get_debt(const json& j) -> std::any;
   auto get_avg(const json& j) -> std::any;
   auto get_group(const json& j) -> std::any;
+  std::string print_string() const;
 
+  std::string name_string() const;
+  std::string group_string() const;
+  std::string avg_string() const;
+  std::string debt_string() const;
+
+  Student(const json &j);
 
  private:
   std::string name;

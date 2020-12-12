@@ -33,7 +33,7 @@ find_package(nlohmann_json CONFIG REQUIRED)
 add_library(template STATIC
   # enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
-        sources/Student.cpp include/Student.hpp)
+        sources/Student.cpp include/Student.hpp sources/Json.cpp include/Json.hpp)
 add_executable(tests
   # TODO: enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
