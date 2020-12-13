@@ -2,20 +2,20 @@
   "items": [
     {
       "name": "Ivanov Petr",
-      "group": "first",
-      "avg": "five",
-      "debt": "C"
+      "group": "1",
+      "avg": "4.25",
+      "debt": null
     },
     {
       "name": "Sidorov Ivan",
-      "group": "three",
-      "avg": "four",
+      "group": 31,
+      "avg": 4,
       "debt": "C++"
     },
     {
       "name": "Pertov Nikita",
       "group": "IU8-31",
-      "avg": "three",
+      "avg": 3.5,
       "debt": [
         "C++",
         "Linux",

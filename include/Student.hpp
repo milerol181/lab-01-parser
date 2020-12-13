@@ -19,8 +19,6 @@ class Student {
   auto get_avg(const json& j) -> std::any;
   auto get_group(const json& j) -> std::any;
   std::string print_string() const;
-
-  std::string name_string() const;
   std::string group_string() const;
   std::string avg_string() const;
   std::string debt_string() const;

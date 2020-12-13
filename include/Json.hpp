@@ -14,6 +14,7 @@ class Table {
   Table();
   void parsing_file(const std::string &path_file);
   std::string print_string_all();
+  int count_members();
  private:
   std::vector<Student> students_all;
   std::vector<int> symbols;

@@ -14,7 +14,10 @@ void Student::from_json(const json& j) {
 }
 
 auto Student::get_name(const json& j) -> std::string {
-  return j.get<std::string>();
+  if (j.is_string()) {
+    return j.get<std::string>();
+  }
+  else throw (std::string("Name is wrong (not string)\n"));
 }
 
 auto Student::get_debt(const json& j) -> std::any {
@@ -22,8 +25,9 @@ auto Student::get_debt(const json& j) -> std::any {
     return nullptr;
   else if (j.is_string())
     return j.get<std::string>();
-  else
+  else if (j.is_array())
     return j.get<std::vector<std::string> >();
+  else throw (std::string("Debt is wrong (not null, string or array)\n"));
 }
 
 auto Student::get_avg(const json& j) -> std::any {
@@ -32,22 +36,21 @@ auto Student::get_avg(const json& j) -> std::any {
   else if (j.is_string())
     return j.get<std::string>();
   else if (j.is_number_float())
-    return j.get<double>();
-  else
-    return j.get<std::size_t>();
+    return j.get<float>();
+  else if (j.is_number_integer())
+    return j.get<int>();
+  else throw (std::string("Average is wrong (not null,string,float,int)\n"));
 }
 
 auto Student::get_group(const json& j) -> std::any {
   if (j.is_string())
     return j.get<std::string>();
-  else
-  return j.get<std::size_t>();
+  else if (j.is_number_integer())
+    return j.get<int>();
+  else throw (std::string("Group is wrong (not string or int number)\n"));
 }
 
-std::string Student::name_string() const
-{
-  return name;
-}
+
 std::string Student::group_string() const
 {
   if (group.type() == typeid(int))
@@ -56,7 +59,7 @@ std::string Student::group_string() const
   {
     std::string tmp = std::to_string(std::any_cast<float>(group));
     while (tmp.at(tmp.size()-1) == '0')
-      tmp = tmp.substr(0, tmp.size()-1);
+      tmp.pop_back();
     return tmp;
   } else {
     return std::any_cast<std::string>(group);
@@ -70,7 +73,7 @@ std::string Student::avg_string() const
   {
     std::string tmp = std::to_string(std::any_cast<float>(avg));
     while (tmp.at(tmp.size()-1) == '0')
-      tmp = tmp.substr(0, tmp.size()-1);
+      tmp.pop_back();
     return tmp;
   } else {
     return std::any_cast<std::string>(avg);
@@ -98,7 +101,8 @@ std::string Student::debt_string() const
 
 std::string Student::print_string() const {
   std::string string;
-  string = name + avg_string() + debt_string() + group_string();
+  string = "| " + name +" | " + group_string() +" | "
+           + avg_string() +" | " + debt_string() + " | ";
   return string;
 }
 Student::Student(const json& j) {
