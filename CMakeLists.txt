@@ -19,7 +19,7 @@ HunterGate(
 )
 
 # TODO: rename project and delete this comment
-project(template)
+project(lab-01-parser)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
@@ -30,7 +30,7 @@ hunter_add_package(nlohmann_json)
 find_package(nlohmann_json CONFIG REQUIRED)
 
 # TODO: change template word to project name and delete this comment
-add_library(template STATIC
+add_library(lab-01-parser STATIC
   # enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
         sources/Student.cpp include/Student.hpp sources/Json.cpp include/Json.hpp)
@@ -40,15 +40,15 @@ add_executable(tests
 )
 
 # TODO: change template word to project name and delete this comment
-target_include_directories(template
+target_include_directories(lab-01-parser
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 target_include_directories(tests
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 # TODO: change template word to project name and delete this comment
-target_link_libraries(tests GTest::gtest_main template)
-target_link_libraries(template nlohmann_json::nlohmann_json)
+target_link_libraries(tests GTest::gtest_main lab-01-parser)
+target_link_libraries(lab-01-parser nlohmann_json::nlohmann_json)
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests)
@@ -58,7 +58,7 @@ if(BUILD_COVERAGE)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tools/coverage/cmake")
   find_package(codecov)
   # TODO: change template word to project name and delete this comment
-  add_coverage(template)
+  add_coverage(lab-01-parser)
   add_coverage(tests)
   coverage_evaluate()
 endif()
