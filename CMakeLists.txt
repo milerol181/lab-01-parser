@@ -32,7 +32,6 @@ find_package(nlohmann_json CONFIG REQUIRED)
 # TODO: change template word to project name and delete this comment
 add_library(lab-01-parser STATIC
   # enum your files and delete this comment
-  ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
         sources/Student.cpp include/Student.hpp sources/Json.cpp include/Json.hpp)
 add_executable(tests
   # TODO: enum your files and delete this comment

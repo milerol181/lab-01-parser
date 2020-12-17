@@ -37,4 +37,10 @@ std::string Table::print_string_all() {
   return string;
 
 }
-
+std::ostream& operator<<(std::ostream& out, const Table& t) {
+  out << "|name | group|  avg | debt | " << std::endl;
+  for (size_t i = 0; i < t.students_all.size(); i++) {
+    out << t.students_all[i] << std::endl;
+  }
+  return out;
+}

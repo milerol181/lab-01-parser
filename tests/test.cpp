@@ -13,6 +13,8 @@ TEST(File_path, true_file_path) {
   std::string file_path = "../file_json/main.json";
   Table table;
   table.parsing_file(file_path);
+  std::stringstream out;
+  out << table << std::endl;
   std::cout << table.print_string_all() << std::endl;
   EXPECT_TRUE(true);
 
@@ -22,13 +24,14 @@ TEST(Table_output, table_test) {
   std::string file_path = "../file_json/main.json";
   Table table;
   table.parsing_file(file_path);
-  std::cout << table.print_string_all() << std::endl;
+  std::stringstream out;
+  out << table << std::endl;
   std:: string true_table =
   "|name | group|  avg | debt | \n"
   "| Ivanov Petr | 1 | 4.25 | null | \n"
   "| Sidorov Ivan | 31 | 4 | C++ | \n"
-  "| Pertov Nikita | IU8-31 | 3.5 | 3 | \n";
-  EXPECT_EQ(table.print_string_all(), true_table);
+  "| Pertov Nikita | IU8-31 | 3.5 | 3 | \n\n";
+  EXPECT_EQ(out.str(), true_table);
 }
 
 
@@ -40,7 +43,8 @@ TEST(File_path, mistake_file_path) {
     std::string file_path = "../file_json/mainnn.json";
     Table table;
     table.parsing_file(file_path);
-    std::cout << table.print_string_all() << std::endl;
+    std::stringstream out;
+    out << table << std::endl;
   } catch (std::string ERROR){
     error1 = ERROR;
     std::cout << "mistake is here: " << ERROR << std::endl;
@@ -56,7 +60,8 @@ TEST(Value_input, test_debt) {
     std::string file_path = "../file_json/debt_test.json";
     Table table;
     table.parsing_file(file_path);
-    std::cout << table.print_string_all() << std::endl;
+    std::stringstream out;
+    out << table << std::endl;
   } catch (std::string ERROR){
     error1 = ERROR;
     std::cout << "mistake is here: " << ERROR << std::endl;
@@ -72,7 +77,8 @@ TEST(Value_input, test_name) {
     std::string file_path = "../file_json/name_test.json";
     Table table;
     table.parsing_file(file_path);
-    std::cout << table.print_string_all() << std::endl;
+    std::stringstream out;
+    out << table << std::endl;
   } catch (std::string ERROR){
     error1 = ERROR;
     std::cout << "mistake is here: " << ERROR << std::endl;
@@ -88,7 +94,8 @@ TEST(Value_input, test_group) {
     std::string file_path = "../file_json/group_test.json";
     Table table;
     table.parsing_file(file_path);
-    std::cout << table.print_string_all() << std::endl;
+    std::stringstream out;
+    out << table << std::endl;
   } catch (std::string ERROR){
     error1 = ERROR;
     std::cout << "mistake is here: " << ERROR << std::endl;
@@ -104,7 +111,8 @@ TEST(Value_input, test_avg) {
     std::string file_path = "../file_json/avg_test.json";
     Table table;
     table.parsing_file(file_path);
-    std::cout << table.print_string_all() << std::endl;
+    std::stringstream out;
+    out << table << std::endl;
   } catch (std::string ERROR){
     error1 = ERROR;
     std::cout << "mistake is here: " << ERROR << std::endl;
@@ -120,7 +128,8 @@ TEST(Value_input, test_meta) {
     std::string file_path = "../file_json/meta_test.json";
     Table table;
     table.parsing_file(file_path);
-    std::cout << table.print_string_all() << std::endl;
+    std::stringstream out;
+    out << table << std::endl;
   } catch (std::string ERROR){
     error1 = ERROR;
     std::cout << "mistake is here: " << ERROR << std::endl;
@@ -136,10 +145,12 @@ TEST(Value_input, test_items) {
     std::string file_path = "../file_json/items_test.json";
     Table table;
     table.parsing_file(file_path);
-    std::cout << table.print_string_all() << std::endl;
+    std::stringstream out;
+    out << table << std::endl;
   } catch (std::string ERROR){
     error1 = ERROR;
     std::cout << "mistake is here: " << ERROR << std::endl;
   }
   EXPECT_EQ(error1,check);
 }
+

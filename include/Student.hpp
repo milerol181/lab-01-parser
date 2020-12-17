@@ -22,6 +22,7 @@ class Student {
   std::string group_string() const;
   std::string avg_string() const;
   std::string debt_string() const;
+  friend std::ostream& operator<<(std::ostream &out, const Student& s);
 
   Student(const json &j);
 

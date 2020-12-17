@@ -108,3 +108,8 @@ std::string Student::print_string() const {
 Student::Student(const json& j) {
   from_json(j);
 }
+std::ostream& operator<<(std::ostream& out, const Student& s) {
+  out << "| " << s.name <<" | " << s.group_string() <<" | "
+         << s.avg_string() <<" | " << s.debt_string() << " | ";
+  return out;
+}
